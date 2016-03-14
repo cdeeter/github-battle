@@ -3,7 +3,6 @@ var Prompt = require('../components/Prompt');
 
 var PromptContainer = React.createClass({
   contextTypes: {
-    // Dynamic routing; don't have to pass the router down as props
     router: React.PropTypes.object.isRequired
   },
 
@@ -25,11 +24,6 @@ var PromptContainer = React.createClass({
     });
 
     if (this.props.routeParams.playerOne) {
-      console.log(this.context);
-      // go to /battle
-      // get playerOne from the routeParams and
-      // playerTwo from what the user entered (since currently
-      // on the playerTwo route)
       this.context.router.push({
         pathname: '/battle',
         query: {
@@ -38,17 +32,11 @@ var PromptContainer = React.createClass({
         }
       })
     } else {
-      // go to /playerTwo; playerOne param will be the
-      // username that was just entered
       this.context.router.push('/playerTwo/' + this.state.username)
     }
   },
 
   render: function() {
-    // A new Prompt component was created for rendering.
-    // We want to keep our business logic components separate
-    // from our rendering components. To do this, we also
-    // need to pass in the values needed in the rendering component.
     return (
       <Prompt
         onSubmitUser={this.handleSubmitUser}
