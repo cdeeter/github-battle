@@ -1,11 +1,13 @@
 var React = require('react');
 
+function puke(object) {
+  return <pre>{JSON.stringify(object, null, ' ')}</pre>
+}
+
 function ConfirmBattle (props) {
-  // Conditionally render the confirm battle page
-  // depending on if isLoading is true or not
   return props.isLoading === true
     ? <p> Loading! </p>
-    : <p> CONFIRM BATTLE! </p>
+    : <p> CONFIRM BATTLE!: {puke(props)}</p>
 }
 
 module.exports = ConfirmBattle;
